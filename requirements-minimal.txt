@@ -1,0 +1,9 @@
+# Minimal requirements for production
+streamlit==1.29.0
+transformers==4.36.0
+torch==2.1.0
+sentence-transformers==2.2.2
+pandas==2.1.4
+plotly==5.18.0
+bcrypt==4.1.2
+python-dotenv==1.0.0

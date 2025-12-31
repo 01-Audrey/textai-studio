@@ -1,0 +1,28 @@
+# ==================================================
+# Docker Compose - Development Override
+# ==================================================
+version: '3.8'
+
+services:
+  app:
+    # Development-specific settings
+    environment:
+      - APP_ENV=development
+      - DEBUG=true
+      - ENABLE_MODEL_CACHE=false
+
+    # Mount source code for live reload
+    volumes:
+      - ./:/app
+      - /app/__pycache__
+      - /app/.venv
+
+    # Override command for development
+    command: >
+      sh -c "
+        pip install -r requirements.txt &&
+        streamlit run textai_studio_app.py
+          --server.port=8501
+          --server.address=0.0.0.0
+          --server.runOnSave=true
+      "
